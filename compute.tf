@@ -22,6 +22,12 @@ resource "oci_core_instance" "Webserver1" {
   metadata = {
     ssh_authorized_keys = tls_private_key.public_private_key_pair.public_key_openssh
   }
+
+  # WebServer VNIC
+  create_vnic_details {
+    subnet_id       = oci_core_subnet.WebSubnet.id
+    assign_public_ip = true
+  }
 }
 
 data "oci_core_vnic" "Webserver1_VNIC1" {
