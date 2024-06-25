@@ -38,3 +38,8 @@ data "oci_core_vnic_attachments" "Webserver1_VNIC1_attach" {
 data "oci_core_vnic" "FoggyKitchenWebserver1_VNIC1" {
   vnic_id = data.oci_core_vnic_attachments.Webserver1_VNIC1_attach.vnic_attachments.0.vnic_id
 }
+
+# data "oci_core_vnic" "Webserver1_VNIC1" {
+#   # Asegúrate de que este vnic_id se obtiene del data source oci_core_vnic_attachments correctamente
+#   vnic_id = data.oci_core_vnic_attachments.Webserver1_VNIC1_attach.vnic_attachments[0].vnic_id
+# }

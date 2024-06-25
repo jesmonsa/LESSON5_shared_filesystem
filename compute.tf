@@ -31,6 +31,6 @@ resource "oci_core_instance" "Webserver1" {
 }
 
 data "oci_core_vnic" "Webserver1_VNIC1" {
-  vnic_id       = oci_core_instance.Webserver1.primary_vnic_id
-  display_name  = "Webserver1_VNIC1"
+  # Asegúrate de que este vnic_id se obtiene del data source oci_core_vnic_attachments correctamente
+  vnic_id = data.oci_core_vnic_attachments.Webserver1_VNIC1_attach.vnic_attachments[0].vnic_id
 }
