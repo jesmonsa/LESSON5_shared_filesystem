@@ -31,8 +31,6 @@ resource "oci_core_instance" "Webserver1" {
 }
 
 data "oci_core_vnic" "Webserver1_VNIC1" {
-  vnic_id       = oci_core_instance.WebServer1.primary_vnic_id
+  vnic_id       = oci_core_instance.Webserver1.primary_vnic_id
   display_name  = "Webserver1_VNIC1"
 }
-
-
