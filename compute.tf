@@ -3,7 +3,7 @@
 resource "oci_core_instance" "Webserver1" {
   availability_domain = var.availablity_domain_name == "" ? lookup(data.oci_identity_availability_domains.ADs.availability_domains[0], "name") : var.availablity_domain_name
   compartment_id      = oci_identity_compartment.Prod_01.id
-  display_name        = "WebServer"
+  display_name        = "WebServer1"
   shape               = var.Shape
 
   dynamic "shape_config" {
