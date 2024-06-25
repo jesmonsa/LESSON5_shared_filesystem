@@ -1,5 +1,5 @@
 # WebServer Instance Public IP
-output "FoggyKitchenWebserver1PublicIP" {
+output "Webserver1PublicIP" {
   value = [data.oci_core_vnic.Webserver1_VNIC1.public_ip_address]
 }
 
