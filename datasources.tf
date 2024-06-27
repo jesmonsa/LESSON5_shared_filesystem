@@ -27,11 +27,18 @@ data "oci_core_images" "OSImage" { # definir el data source de las imágenes
   }
 }
 
-# Compute VNIC Attachment DataSource
+# Compute VNIC Attachment DataSource for WebServer1
 data "oci_core_vnic_attachments" "Webserver1_VNIC1_attach" { # definir el data source de los adjuntos de la VNIC
   availability_domain = var.availablity_domain_name == "" ? lookup(data.oci_identity_availability_domains.ADs. availability_domains[0], "name") : var.availablity_domain_name # definir el dominio de disponibilidad
   compartment_id      = oci_identity_compartment.Prod_01.id # definir el OCID del compartimento
   instance_id         = oci_core_instance.Webserver1.id # definir el OCID de la instancia
+}
+
+# Compute VNIC Attachment DataSource for Webserver2
+data "oci_core_vnic_attachments" "Webserver2_VNIC1_attach" { # definir el data source de los adjuntos de la VNIC
+  availability_domain = var.availablity_domain_name2 == "" ? lookup(data.oci_identity_availability_domains.ADs. availability_domains[1], "name") : var.availablity_domain_name # definir el dominio de disponibilidad
+  compartment_id      = oci_identity_compartment.Prod_01.id # definir el OCID del compartimento
+  instance_id         = oci_core_instance.Webserver2.id # definir el OCID de la instancia
 }
 
 # # Compute VNIC DataSource
