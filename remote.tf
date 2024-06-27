@@ -16,7 +16,7 @@ resource "null_resource" "Webserver1HTTPD" { # definir el recurso nulo para la i
 
       "echo '== 2. Creating /var/www/html/index.html'", # crear el archivo index.html
       "sudo -u root touch /var/www/html/index.html", # crear el archivo index.html
-      "sudo /bin/su -c \"echo 'Welcome to example.com! This is WEBSERVER2...' > /var/www/html/index.html\"", # escribir en el archivo index.html
+      "sudo /bin/su -c \"echo 'Welcome to example.com! This is WEBSERVER1...' > /var/www/html/index.html\"", # escribir en el archivo index.html
 
       "echo '== 3. Disabling firewall and starting HTTPD service'", # deshabilitar el firewall y arrancar el servicio HTTPD
       "sudo -u root service firewalld stop", # detener el servicio de firewall
@@ -42,7 +42,7 @@ resource "null_resource" "Webserver2HTTPD" { # definir el recurso nulo para la i
 
       "echo '== 2. Creating /var/www/html/index.html'", # crear el archivo index.html
       "sudo -u root touch /var/www/html/index.html", # crear el archivo index.html
-      "sudo /bin/su -c \"echo 'Welcome to example.com! This is WEBSERVER1...' > /var/www/html/index.html\"", # escribir en el archivo index.html
+      "sudo /bin/su -c \"echo 'Welcome to example.com! This is WEBSERVER2...' > /var/www/html/index.html\"", # escribir en el archivo index.html
 
       "echo '== 3. Disabling firewall and starting HTTPD service'", # deshabilitar el firewall y arrancar el servicio HTTPD
       "sudo -u root service firewalld stop", # detener el servicio de firewall
