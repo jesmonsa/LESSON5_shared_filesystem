@@ -11,8 +11,8 @@ variable "availablity_domain_name" { # definir el nombre del dominio de disponib
   default = "" # definir el valor por defecto
 }
 
-variable "availablity_domain_name2" {
-  default = ""
+variable "availablity_domain_name2" { # definir el nombre del dominio de disponibilidad
+  default = "" # definir el valor por defecto
 }
 
 variable "VCN-CIDR" { # definir el CIDR de la VCN
