@@ -67,7 +67,7 @@ resource "oci_core_instance" "Webserver2" { # definir el recurso de la instancia
   }
 }
 
-data "oci_core_vnic" "Webserver2_VNIC1" { # definir el data source de la VNIC
-  # Asegúrate de que este vnic_id se obtiene del data source oci_core_vnic_attachments correctamente
-  vnic_id = data.oci_core_vnic_attachments.Webserver2_VNIC1_attach.vnic_attachments[0].vnic_id # definir el OCID de la VNIC
-}
+# data "oci_core_vnic" "Webserver2_VNIC1" { # definir el data source de la VNIC
+#   # Asegúrate de que este vnic_id se obtiene del data source oci_core_vnic_attachments correctamente
+#   vnic_id = data.oci_core_vnic_attachments.Webserver2_VNIC1_attach.vnic_attachments[0].vnic_id # definir el OCID de la VNIC
+# }
