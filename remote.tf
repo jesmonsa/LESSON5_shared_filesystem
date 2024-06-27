@@ -1,4 +1,4 @@
-# Software installation within WebServer Instance
+# Software installation within WebServer1 Instance
 resource "null_resource" "Webserver1HTTPD" { # definir el recurso nulo para la instalación de software en la instancia del servidor web
   depends_on = [oci_core_instance.Webserver1] # definir la dependencia
   provisioner "remote-exec" { # definir el provisioner
@@ -16,7 +16,7 @@ resource "null_resource" "Webserver1HTTPD" { # definir el recurso nulo para la i
 
       "echo '== 2. Creating /var/www/html/index.html'", # crear el archivo index.html
       "sudo -u root touch /var/www/html/index.html", # crear el archivo index.html
-      "sudo /bin/su -c \"echo 'Welcome to example.com! This is WEBSERVER1...' > /var/www/html/index.html\"", # escribir en el archivo index.html
+      "sudo /bin/su -c \"echo 'Welcome to example.com! This is WEBSERVER2...' > /var/www/html/index.html\"", # escribir en el archivo index.html
 
       "echo '== 3. Disabling firewall and starting HTTPD service'", # deshabilitar el firewall y arrancar el servicio HTTPD
       "sudo -u root service firewalld stop", # detener el servicio de firewall
@@ -24,8 +24,8 @@ resource "null_resource" "Webserver1HTTPD" { # definir el recurso nulo para la i
   }
 }
 
-# Software installation within WebServer Instance
-resource "null_resource" "Webserver1HTTPD" { # definir el recurso nulo para la instalación de software en la instancia del servidor web
+# Software installation within WebServer2 Instance
+resource "null_resource" "Webserver2HTTPD" { # definir el recurso nulo para la instalación de software en la instancia del servidor web
   depends_on = [oci_core_instance.Webserver2] # definir la dependencia
   provisioner "remote-exec" { # definir el provisioner
     connection {

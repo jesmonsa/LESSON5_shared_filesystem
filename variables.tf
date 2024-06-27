@@ -6,8 +6,13 @@ variable "fingerprint" {} # definir la huella digital
 variable "private_key_path" {} # definir la ruta de la clave privada
 variable "compartment_ocid" {} # definir el OCID del compartment
 variable "region" {} # definir la región
+
 variable "availablity_domain_name" { # definir el nombre del dominio de disponibilidad
   default = "" # definir el valor por defecto
+}
+
+variable "availablity_domain_name2" {
+  default = ""
 }
 
 variable "VCN-CIDR" { # definir el CIDR de la VCN
