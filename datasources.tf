@@ -47,6 +47,6 @@ data "oci_core_vnic_attachments" "Webserver2_VNIC1_attach" {
 }
 
 # WebServer2 Compute VNIC DataSource
-data "oci_core_vnic" "FoggyKitchenWebserver2_VNIC1" {
+data "oci_core_vnic" "Webserver2_VNIC1" {
   vnic_id = data.oci_core_vnic_attachments.Webserver2_VNIC1_attach.vnic_attachments.0.vnic_id
 }
