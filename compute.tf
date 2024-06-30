@@ -72,3 +72,12 @@ data "oci_core_vnic" "Webserver2_VNIC1" { # definir el data source de la VNIC
   # Asegúrate de que este vnic_id se obtiene del data source oci_core_vnic_attachments correctamente
   vnic_id = data.oci_core_vnic_attachments.Webserver2_VNIC1_attach.vnic_attachments[0].vnic_id # definir el OCID de la VNIC
 }
+
+resource "null_resource" "get_vnic_id" {
+  provisioner "local-exec" {
+    command = <<EOT
+    oci network vnic-attachment list --compartment-id ${oci_identity_compartment.Prod_01.id} --instance-id ${oci_core_instance.Webserver2.id} --query "data[0].\"vnic-id\"" --raw-output > vnic_id.txt
+    EOT
+  }
+  depends_on = [oci_core_instance.Webserver2]
+}
