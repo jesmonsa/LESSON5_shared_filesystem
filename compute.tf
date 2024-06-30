@@ -38,7 +38,7 @@ resource "oci_core_instance" "Webserver1" { # definir el recurso de la instancia
 # WebServer Compute # 2 
 
 resource "oci_core_instance" "Webserver2" { # definir el recurso de la instancia
-  availability_domain = var.availablity_domain_name2 == "" ? lookup(data.oci_identity_availability_domains.ADs.availability_domains[1], "name") : var.availablity_domain_name # definir el dominio de disponibilidad de la instancia en caso de que no se haya definido en las variables
+  availability_domain = var.availablity_domain_name == "" ? lookup(data.oci_identity_availability_domains.ADs.availability_domains[0], "name") : var.availablity_domain_name # definir el dominio de disponibilidad de la instancia en caso de que no se haya definido en las variables
   compartment_id      = oci_identity_compartment.Prod_01.id # definir el OCID del compartimento
   display_name        = "WebServer2" # definir el nombre de la instancia
   shape               = var.Shape # definir la forma de la instancia
