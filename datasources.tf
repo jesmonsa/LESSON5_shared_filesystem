@@ -49,8 +49,3 @@ data "oci_core_vnic_attachments" "Webserver2_VNIC1_attach" {
 data "oci_core_vnic" "Webserver2_VNIC1" {
   vnic_id = data.oci_core_vnic_attachments.Webserver2_VNIC1_attach.vnic_attachments.0.vnic_id
 }
-
-# data "oci_core_vnic" "Webserver2_VNIC1" {
-#   count  = length(data.oci_core_vnic_attachments.Webserver2_VNIC1_attach.vnic_attachments) > 0 ? 1 : 0
-#   vnic_id = length(data.oci_core_vnic_attachments.Webserver2_VNIC1_attach.vnic_attachments) > 0 ? data.oci_core_vnic_attachments.Webserver2_VNIC1_attach.vnic_attachments[0].vnic_id : ""
-# }
