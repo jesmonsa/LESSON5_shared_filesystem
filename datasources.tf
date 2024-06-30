@@ -41,13 +41,12 @@ data "oci_core_vnic" "Webserver1_VNIC1" {
 
 # WebServer2 Compute VNIC Attachment DataSource
 data "oci_core_vnic_attachments" "Webserver2_VNIC1_attach" {
-  availability_domain = var.availablity_domain_name == "" ? lookup(data.oci_identity_availability_domains.ADs.availability_domains[0], "name") : var.availablity_domain_name
-  compartment_id      = oci_identity_compartment.Prod_01.id
-  instance_id         = oci_core_instance.Webserver2.id
-  depends_on          = [oci_core_instance.Webserver2]
+  compartment_id = var.compartment_ocid
+  instance_id    = oci_core_instance.Webserver2.id
+  depends_on     = [oci_core_instance.Webserver2]
 }
 
-# WebServer2 Compute VNIC DataSource
 data "oci_core_vnic" "Webserver2_VNIC1" {
-  vnic_id = data.oci_core_vnic_attachments.Webserver2_VNIC1_attach.vnic_attachments.0.vnic_id
+  count  = length(data.oci_core_vnic_attachments.Webserver2_VNIC1_attach.vnic_attachments) > 0 ? 1 : 0
+  vnic_id = length(data.oci_core_vnic_attachments.Webserver2_VNIC1_attach.vnic_attachments) > 0 ? data.oci_core_vnic_attachments.Webserver2_VNIC1_attach.vnic_attachments[0].vnic_id : ""
 }
