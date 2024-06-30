@@ -27,26 +27,26 @@ data "oci_core_images" "OSImage" { # definir el data source de las imágenes
   }
 }
 
-# Compute VNIC Attachment DataSource for WebServer1
-data "oci_core_vnic_attachments" "Webserver1_VNIC1_attach" { # definir el data source de los adjuntos de la VNIC
-  availability_domain = var.availablity_domain_name == "" ? lookup(data.oci_identity_availability_domains.ADs. availability_domains[0], "name") : var.availablity_domain_name # definir el dominio de disponibilidad
-  compartment_id      = oci_identity_compartment.Prod_01.id # definir el OCID del compartimento
-  instance_id         = oci_core_instance.Webserver1.id # definir el OCID de la instancia
+# WebServer1 Compute VNIC Attachment DataSource
+data "oci_core_vnic_attachments" "Webserver1_VNIC1_attach" {
+  availability_domain = var.availablity_domain_name == "" ? lookup(data.oci_identity_availability_domains.ADs.availability_domains[0], "name") : var.availablity_domain_name
+  compartment_id      = oci_identity_compartment.Prod_01.id
+  instance_id         = oci_core_instance.Webserver1.id
 }
 
-# Compute VNIC Attachment DataSource for Webserver2
-data "oci_core_vnic_attachments" "Webserver2_VNIC1_attach" { # definir el data source de los adjuntos de la VNIC
-  availability_domain = var.availablity_domain_name == "" ? lookup(data.oci_identity_availability_domains.ADs. availability_domains[0], "name") : var.availablity_domain_name # definir el dominio de disponibilidad
-  compartment_id      = oci_identity_compartment.Prod_01.id # definir el OCID del compartimento
-  instance_id         = oci_core_instance.Webserver2.id # definir el OCID de la instancia
+# WebServer1 Compute VNIC DataSource
+data "oci_core_vnic" "Webserver1_VNIC1" {
+  vnic_id = data.oci_core_vnic_attachments.Webserver1_VNIC1_attach.vnic_attachments.0.vnic_id
 }
 
-# # Compute VNIC DataSource
-# data "oci_core_vnic" "Webserver1_VNIC1" { # definir el data source de la VNIC
-#   vnic_id = data.oci_core_vnic_attachments.Webserver1_VNIC1_attach.vnic_attachments.0.vnic_id # definir el OCID de la VNIC
-# }
+# WebServer2 Compute VNIC Attachment DataSource
+data "oci_core_vnic_attachments" "Webserver2_VNIC1_attach" {
+  availability_domain = var.availablity_domain_name == "" ? lookup(data.oci_identity_availability_domains.ADs.availability_domains[0], "name") : var.availablity_domain_name
+  compartment_id      = oci_identity_compartment.Prod_01.id
+  instance_id         = oci_core_instance.Webserver2.id
+}
 
-# data "oci_core_vnic" "Webserver1_VNIC1" {
-#   # Asegúrate de que este vnic_id se obtiene del data source oci_core_vnic_attachments correctamente
-#   vnic_id = data.oci_core_vnic_attachments.Webserver1_VNIC1_attach.vnic_attachments[0].vnic_id
-# }
+# WebServer2 Compute VNIC DataSource
+data "oci_core_vnic" "FoggyKitchenWebserver2_VNIC1" {
+  vnic_id = data.oci_core_vnic_attachments.Webserver2_VNIC1_attach.vnic_attachments.0.vnic_id
+}
