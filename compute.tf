@@ -13,10 +13,10 @@ resource "oci_core_instance" "Webserver1" { # definir el recurso de la instancia
       ocpus         = var.FlexShapeOCPUS # definir los OCPUs de la instancia flexible
     }
   }
-
-  source_details { # definir los detalles de la fuente de la instancia
-    source_type = "image" # definir el tipo de fuente de la instancia
-    source_id   = lookup(data.oci_core_images.OSImage.images[0], "id") # definir el OCID de la imagen de la instancia
+  fault_domain = "FAULT-DOMAIN-1"
+  source_details {
+    source_type = "image"
+    source_id   = lookup(data.oci_core_images.OSImage.images[0], "id")
   }
 
   metadata = { # definir los metadatos de la instancia
@@ -51,9 +51,10 @@ resource "oci_core_instance" "Webserver2" { # definir el recurso de la instancia
     }
   }
 
-  source_details { # definir los detalles de la fuente de la instancia
-    source_type = "image" # definir el tipo de fuente de la instancia
-    source_id   = lookup(data.oci_core_images.OSImage.images[0], "id") # definir el OCID de la imagen de la instancia
+  fault_domain = "FAULT-DOMAIN-2"
+  source_details {
+    source_type = "image"
+    source_id   = lookup(data.oci_core_images.OSImage.images[0], "id")
   }
 
   metadata = { # definir los metadatos de la instancia
