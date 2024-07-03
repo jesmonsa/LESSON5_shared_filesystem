@@ -1,6 +1,6 @@
 # LoadBalancer Public IP
 output "LoadBalancer_Public_IP" {
-  value = [oci_load_balancer.LoadBalancer.ip_addresses]
+  value = [for ip_detail in oci_load_balancer.LoadBalancer.ip_address_details : ip_detail.ip_address]
 }
 
 # WebServer1 Instance Public IP
