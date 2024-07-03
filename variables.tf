@@ -47,6 +47,18 @@ variable "service_ports" { # definir los puertos de los servicios
   default = [80, 443, 22] # definir el valor por defecto
 }
 
+variable "lb_shape" {
+  default = "flexible"
+}
+
+variable "flex_lb_min_shape" {
+  default = 10
+}
+
+variable "flex_lb_max_shape" {
+  default = 100
+}
+
 # Dictionary Locals
 locals {
   compute_flexible_shapes = [ # definir las formas de la instancia flexible
@@ -61,4 +73,5 @@ locals {
 # Checks if is using Flexible Compute Shapes
 locals {
   is_flexible_shape = contains(local.compute_flexible_shapes, var.Shape)
+  is_flexible_lb_shape = var.lb_shape == "flexible" ? true : false
 }
