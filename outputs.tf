@@ -1,3 +1,8 @@
+# LoadBalancer Public IP
+output "LoadBalancer_Public_IP" {
+  value = [oci_load_balancer.LoadBalancer.ip_addresses]
+}
+
 # WebServer1 Instance Public IP
 output "Webserver1PublicIP" { # definir la salida de la IP pública de la instancia
   value = [data.oci_core_vnic.Webserver1_VNIC1.public_ip_address] # definir la IP pública de la instancia
