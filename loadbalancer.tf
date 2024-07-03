@@ -10,7 +10,7 @@ resource "oci_load_balancer" "LoadBalancer" {
     }
   }
 
-  compartment_id = oci_identity_compartment.Prod_01
+  compartment_id = oci_identity_compartment.Prod_01.id
   subnet_ids = [
     oci_core_subnet.WebSubnet.id
   ]
