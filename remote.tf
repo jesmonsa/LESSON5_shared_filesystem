@@ -5,7 +5,7 @@ resource "null_resource" "Webserver1HTTPD" { # definir el recurso nulo para la i
     connection {
       type        = "ssh" # definir el tipo de conexión
       user        = "opc" # definir el usuario
-      host        = data.oci_core_vnic.Webserver1_VNIC1.public_ip_address # definir la IP pública de la instancia
+      host        = data.oci_core_vnic.Webserver1_VNIC1.private_ip_address # definir la IP pública de la instancia
       private_key = tls_private_key.public_private_key_pair.private_key_pem # definir la clave privada
       script_path = "/home/opc/myssh.sh" # definir la ruta del script
       agent       = false # definir si se utiliza el agente
@@ -35,7 +35,7 @@ resource "null_resource" "Webserver2HTTPD" { # definir el recurso nulo para la i
     connection {
       type        = "ssh" # definir el tipo de conexión
       user        = "opc" # definir el usuario
-      host        = data.oci_core_vnic.Webserver2_VNIC1.public_ip_address # definir la IP pública de la instancia
+      host        = data.oci_core_vnic.Webserver2_VNIC1.private_ip_address # definir la IP pública de la instancia
       private_key = tls_private_key.public_private_key_pair.private_key_pem # definir la clave privada
       script_path = "/home/opc/myssh.sh" # definir la ruta del script
       agent       = false # definir si se utiliza el agente
