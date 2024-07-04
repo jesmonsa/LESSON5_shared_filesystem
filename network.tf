@@ -129,6 +129,7 @@ resource "oci_core_subnet" "WebSubnet" { # definir el recurso de la subred
   route_table_id    = oci_core_route_table.RouteTableViaNAT.id # definir el OCID de la tabla de rutas
   dhcp_options_id   = oci_core_dhcp_options.DhcpOptions1.id # definir el OCID de las opciones DHCP
   security_list_ids = [oci_core_security_list.WebSecurityList.id] # definir el OCID de la lista de seguridad
+  prohibit_public_ip_on_vnic = true
 }
 
 # LoadBalancer Subnet (public)
