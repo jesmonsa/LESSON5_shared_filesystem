@@ -4,8 +4,8 @@ output "BastionServer_PublicIP" {
 }
 
 # LoadBalancer Public IP
-output "LoadBalancer_Public_IP" {
-  value = [for ip_detail in oci_load_balancer.LoadBalancer.ip_address_details : ip_detail.ip_address]
+output "PublicLoadBalancer" {
+  value = [for ip_detail in oci_load_balancer.PublicLoadBalancer.ip_addresses : ip_detail.ip_address]
 }
 
 # WebServer1 Instance Private IP
