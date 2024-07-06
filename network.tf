@@ -94,7 +94,7 @@ resource "oci_core_security_list" "WebSecurityList" { # definir el recurso de la
 resource "oci_core_security_list" "SSHSecurityList" {
   compartment_id = oci_identity_compartment.Prod_01.id
   display_name   = "SSHSecurityList"
-  vcn_id         = oci_core_virtual_network.FoggyKitchenVCN.id
+  vcn_id         = oci_core_virtual_network.VCN_Prod_01.id
 
   egress_security_rules {
     protocol    = "6"
