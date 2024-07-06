@@ -1,3 +1,8 @@
+# Bastion Instance Public IP
+output "BastionServer_PublicIP" {
+  value = [data.oci_core_vnic.BastionServer_VNIC1.public_ip_address]
+}
+
 # LoadBalancer Public IP
 output "LoadBalancer_Public_IP" {
   value = [for ip_detail in oci_load_balancer.LoadBalancer.ip_address_details : ip_detail.ip_address]
