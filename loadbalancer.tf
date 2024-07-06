@@ -1,5 +1,5 @@
 # Public Load Balancer
-resource "oci_load_balancer" "LoadBalancer" {
+resource "oci_load_balancer" "PublicLoadBalancer" {
   shape = var.lb_shape
 
   dynamic "shape_details" {
@@ -12,24 +12,24 @@ resource "oci_load_balancer" "LoadBalancer" {
 
   compartment_id = oci_identity_compartment.Prod_01.id
   subnet_ids = [
-    oci_core_subnet.WebSubnet.id
+    oci_core_subnet.LBSubnet.id
   ]
-  display_name = "LoadBalancer"
+  display_name = "PublicLoadBalancer"
 }
 
 # LoadBalancer Listener
-resource "oci_load_balancer_listener" "LoadBalancerListener" {
-  load_balancer_id         = oci_load_balancer.LoadBalancer.id
+resource "oci_load_balancer_listener" "PublicLoadBalancerListener" {
+  load_balancer_id         = oci_load_balancer.PublicLoadBalancer.id
   name                     = "LoadBalancerListener"
-  default_backend_set_name = oci_load_balancer_backendset.LoadBalancerBackendset.name
+  default_backend_set_name = oci_load_balancer_backendset.PublicLoadBalancerBackendset.name
   port                     = 80
   protocol                 = "HTTP"
 }
 
 # LoadBalancer Backendset
-resource "oci_load_balancer_backendset" "LoadBalancerBackendset" {
+resource "oci_load_balancer_backendset" "PublicLoadBalancerBackendset" {
   name             = "LBBackendset"
-  load_balancer_id = oci_load_balancer.LoadBalancer.id
+  load_balancer_id = oci_load_balancer.PublicLoadBalancer.id
   policy           = "ROUND_ROBIN"
 
   health_checker {
@@ -41,9 +41,9 @@ resource "oci_load_balancer_backendset" "LoadBalancerBackendset" {
 }
 
 # LoadBalanacer Backend for WebServer1 Instance
-resource "oci_load_balancer_backend" "LoadBalancerBackend" {
-  load_balancer_id = oci_load_balancer.LoadBalancer.id
-  backendset_name  = oci_load_balancer_backendset.LoadBalancerBackendset.name
+resource "oci_load_balancer_backend" "PublicLoadBalancerBackend1" {
+  load_balancer_id = oci_load_balancer.PublicLoadBalancer.id
+  backendset_name  = oci_load_balancer_backendset.PublicLoadBalancerBackendset.name
   ip_address       = oci_core_instance.Webserver1.private_ip
   port             = 80
   backup           = false
@@ -53,9 +53,9 @@ resource "oci_load_balancer_backend" "LoadBalancerBackend" {
 }
 
 # LoadBalanacer Backend for WebServer2 Instance
-resource "oci_load_balancer_backend" "LoadBalancerBackend2" {
-  load_balancer_id = oci_load_balancer.LoadBalancer.id
-  backendset_name  = oci_load_balancer_backendset.LoadBalancerBackendset.name
+resource "oci_load_balancer_backend" "PublicLoadBalancerBackend2" {
+  load_balancer_id = oci_load_balancer.PublicLoadBalancer.id
+  backendset_name  = oci_load_balancer_backendset.PublicLoadBalancerBackendset.name
   ip_address       = oci_core_instance.Webserver2.private_ip
   port             = 80
   backup           = false
