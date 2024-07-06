@@ -19,8 +19,16 @@ variable "VCN-CIDR" { # definir el CIDR de la VCN
   default = "10.0.0.0/16" # definir el valor por defecto
 }
 
-variable "Subnet-CIDR" { # definir el CIDR de la subred
-  default = "10.0.1.0/24" # definir el valor por defecto
+variable "WebSubnet-CIDR" {
+  default = "10.0.1.0/24"
+}
+
+variable "LBSubnet-CIDR" {
+  default = "10.0.2.0/24"
+}
+
+variable "BastionSubnet-CIDR" {
+  default = "10.0.3.0/24"
 }
 
 variable "Shape" { # definir la forma
@@ -43,8 +51,12 @@ variable "linux_os_version" { # definir la versión del sistema operativo Linux
   default = "7.9" # definir el valor por defecto
 }
 
-variable "service_ports" { # definir los puertos de los servicios
-  default = [80, 443, 22] # definir el valor por defecto
+variable "webservice_ports" {
+  default = [80, 443]
+}
+
+variable "bastion_ports" {
+  default = [22]
 }
 
 variable "lb_shape" {
