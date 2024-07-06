@@ -121,7 +121,7 @@ resource "oci_core_security_list" "SSHSecurityList" {
 
 # WebSubnet (private)
 resource "oci_core_subnet" "WebSubnet" { # definir el recurso de la subred
-  cidr_block        = var.Subnet-CIDR # definir el bloque CIDR de la subred
+  cidr_block        = var.WebSubnet-CIDR # definir el bloque CIDR de la subred
   display_name      = "WebSubnet" # definir el nombre de la subred
   dns_label         = "WebSubnetN1"   # definir la etiqueta DNS de la subred
   compartment_id    = oci_identity_compartment.Prod_01.id # definir el OCID del compartimento
