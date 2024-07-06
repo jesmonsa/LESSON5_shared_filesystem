@@ -1,6 +1,6 @@
 # Software installation within WebServer1 Instance
 resource "null_resource" "Webserver1HTTPD" { # definir el recurso nulo para la instalación de software en la instancia del servidor web
-  depends_on = [oci_core_instance.Webserver1] # definir la dependencia
+  depends_on = [oci_core_instance.Webserver1, oci_core_instance.BastionServer] # definir la dependencia
   provisioner "remote-exec" { # definir el provisioner
     connection {
       type        = "ssh" # definir el tipo de conexión
@@ -30,7 +30,7 @@ resource "null_resource" "Webserver1HTTPD" { # definir el recurso nulo para la i
 
 # Software installation within WebServer2 Instance
 resource "null_resource" "Webserver2HTTPD" { # definir el recurso nulo para la instalación de software en la instancia del servidor web
-  depends_on = [oci_core_instance.Webserver2] # definir la dependencia
+  depends_on = [oci_core_instance.Webserver2, oci_core_instance.BastionServer] # definir la dependencia
   provisioner "remote-exec" { # definir el provisioner
     connection {
       type        = "ssh" # definir el tipo de conexión
