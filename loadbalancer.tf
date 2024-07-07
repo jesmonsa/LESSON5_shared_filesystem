@@ -36,7 +36,8 @@ resource "oci_load_balancer_backendset" "PublicLoadBalancerBackendset" {
     port                = "80"
     protocol            = "HTTP"
     response_body_regex = ".*"
-    url_path            = "/"
+    url_path            = "/shared/"
+    interval_ms         = "3000"
   }
 }
 
