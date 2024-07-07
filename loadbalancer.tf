@@ -41,7 +41,7 @@ resource "oci_load_balancer_backendset" "PublicLoadBalancerBackendset" {
   }
 }
 
-# LoadBalanacer Backend for WebServer1 Instance
+# LoadBalancer Backend for WebServer1 Instance
 resource "oci_load_balancer_backend" "PublicLoadBalancerBackend1" {
   load_balancer_id = oci_load_balancer.PublicLoadBalancer.id
   backendset_name  = oci_load_balancer_backendset.PublicLoadBalancerBackendset.name
@@ -53,7 +53,7 @@ resource "oci_load_balancer_backend" "PublicLoadBalancerBackend1" {
   weight           = 1
 }
 
-# LoadBalanacer Backend for WebServer2 Instance
+# LoadBalancer Backend for WebServer2 Instance
 resource "oci_load_balancer_backend" "PublicLoadBalancerBackend2" {
   load_balancer_id = oci_load_balancer.PublicLoadBalancer.id
   backendset_name  = oci_load_balancer_backendset.PublicLoadBalancerBackendset.name
