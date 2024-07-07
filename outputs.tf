@@ -5,7 +5,7 @@ output "BastionServer_PublicIP" {
 
 # LoadBalancer Public IP
 output "PublicLoadBalancer" {
-  value = "http://${oci_load_balancer.PublicLoadBalancer.ip_addresses[0]}/shared/"
+  value = "http://${oci_load_balancer.PublicLoadBalancer.public_ip}/shared/"
 }
 
 # WebServer1 Instance Private IP
