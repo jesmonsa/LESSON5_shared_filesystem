@@ -21,7 +21,7 @@ resource "null_resource" "Webserver1SharedFilesystem" { # definir el recurso nul
       "sudo /bin/su -c \"mkdir -p /sharedfs\"",
       "sudo /bin/su -c \"echo '${var.MountTargetIPAddress}:/sharedfs /sharedfs nfs rsize=8192,wsize=8192,timeo=14,intr 0 0' >> /etc/fstab\"",
       "sudo /bin/su -c \"mount /sharedfs\"",
-      "echo '== End of null_resource.FoggyKitchenWebserver1SharedFilesystem'"
+      "echo '== End of null_resource.Webserver1SharedFilesystem'"
     ]
   }
 
@@ -50,7 +50,7 @@ resource "null_resource" "Webserver2SharedFilesystem" { # definir el recurso nul
       "sudo /bin/su -c \"mkdir -p /sharedfs\"",
       "sudo /bin/su -c \"echo '${var.MountTargetIPAddress}:/sharedfs /sharedfs nfs rsize=8192,wsize=8192,timeo=14,intr 0 0' >> /etc/fstab\"",
       "sudo /bin/su -c \"mount /sharedfs\"",
-      "echo '== End of null_resource.FoggyKitchenWebserver2SharedFilesystem'"
+      "echo '== End of null_resource.Webserver2SharedFilesystem'"
     ]
   }
 
