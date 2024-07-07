@@ -78,7 +78,7 @@ resource "null_resource" "Webserver1HTTPD" { # definir el recurso nulo para la i
 
      "echo '== 2. Creating /sharedfs/index.html'",
      "sudo -u root touch /sharedfs/index.html",
-     "sudo /bin/su -c \"echo 'Welcome to Example.com! These are both WEBSERVERS under LB umbrella with shared index.html Yisus 1...' > /sharedfs/index.html\"",
+     "sudo /bin/su -c \"echo 'Welcome to Example.com! These are both WEBSERVERS under LB umbrella with shared index.html Yisus...' > /sharedfs/index.html\"",
 
       "echo '== 3. Adding Alias and Directory sharedfs to /etc/httpd/conf/httpd.conf'",
       "sudo /bin/su -c \"echo 'Alias /shared/ /sharedfs/' >> /etc/httpd/conf/httpd.conf\"",
