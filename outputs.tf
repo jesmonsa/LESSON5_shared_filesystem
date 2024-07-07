@@ -3,9 +3,9 @@ output "BastionServer_PublicIP" {
   value = [data.oci_core_vnic.BastionServer_VNIC1.public_ip_address]
 }
 
-# LoadBalancer Public IP
-output "PublicLoadBalancer" {
-  value = "http://${oci_load_balancer.PublicLoadBalancer.public_ip}/shared/"
+# LoadBalancer URL
+output "PublicLoadBalancer_URL" {
+  value = "http://${oci_load_balancer.PublicLoadBalancer.ip_addresses[0]}/shared/"
 }
 
 # WebServer1 Instance Private IP
