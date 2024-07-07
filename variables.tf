@@ -31,6 +31,10 @@ variable "BastionSubnet-CIDR" {
   default = "10.0.3.0/24"
 }
 
+variable "MountTargetIPAddress" {
+  default = "10.0.1.25"
+}
+
 variable "Shape" { # definir la forma
   default = "VM.Standard.E3.Flex" # definir el valor por defecto
 }

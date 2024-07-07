@@ -25,8 +25,8 @@ resource "oci_file_storage_file_system" "Filesystem" {
 
 # Export
 
-resource "oci_file_storage_export" "FoggyKitchenExport" {
-  export_set_id  = oci_file_storage_mount_target.FoggyKitchenMountTarget.export_set_id
-  file_system_id = oci_file_storage_file_system.FoggyKitchenFilesystem.id
+resource "oci_file_storage_export" "Export" {
+  export_set_id  = oci_file_storage_mount_target.MountTarget.export_set_id
+  file_system_id = oci_file_storage_file_system.Filesystem.id
   path           = "/sharedfs"
 }
